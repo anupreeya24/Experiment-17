@@ -140,5 +140,94 @@ int main() {
 }
 ```
 
+### Algorithm
+
+1. **Define Node Structure**:
+   - Create a class `Node` that contains:
+     - An integer `data` to store the node's value.
+     - A pointer `next` to point to the next node in the list.
+   - Implement a constructor to initialize `data` and set `next` to `NULL`.
+
+2. **Insert Node at the End**:
+   - Define a function `insert_end(Node*& head, int data)`:
+     - Create a new node using the provided `data`.
+     - If the list is empty (`head == NULL`):
+       - Set `head` to point to the new node.
+     - If the list is not empty:
+       - Initialize a temporary pointer to the head.
+       - Traverse the list until reaching the last node (`temp->next != NULL`).
+       - Set the `next` pointer of the last node to point to the new node.
+
+3. **Display the Linked List**:
+   - Define a function `display(Node* head)`:
+     - Initialize a temporary pointer to the head.
+     - While the current node is not `NULL`:
+       - Print the `data` of the current node followed by an arrow (`->`).
+       - Move to the next node.
+     - Print `NULL` to indicate the end of the list.
+
+4. **Main Function**:
+   - Initialize a pointer `head` to `NULL` to represent an empty linked list.
+   - Call `insert_end` to add nodes (e.g., 10, 20, 30) to the end of the list.
+   - After each insertion, call `display` to show the current state of the linked list.
+```cpp
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int num) {
+        data = num;
+        next = NULL;
+    }
+};
+
+
+void insert_end(Node*& head, int data) {
+    Node* new_node = new Node(data); 
+    if (head == NULL) {
+      
+        head = new_node;
+    } else {
+  
+        Node* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+  
+        temp->next = new_node;
+    }
+}
+
+
+void display(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << "->";
+        temp = temp->next;          
+ }
+    cout << "NULL" << endl; t
+}
+
+int main() {
+    Node* head = NULL; 
+
+    insert_end(head, 10);
+    display(head); 
+
+    insert_end(head, 20);
+    display(head); 
+
+    insert_end(head, 30);
+    display(head); 
+
+    return 0;
+}
+```
+
+
 **5. Conclusion:**
 Linked lists are a foundational data structure in computer science, offering unique properties that suit various scenarios, especially where dynamic size and efficient insertions/deletions are required. However, the trade-offs in memory usage and access speed must be carefully considered when choosing between linked lists and other data structures, such as arrays. Understanding the theory and mechanics of linked lists is essential for effective problem-solving and algorithm design in DSA.
