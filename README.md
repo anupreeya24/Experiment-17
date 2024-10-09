@@ -93,51 +93,52 @@ int main(){
    - Initialize a pointer `head` to `NULL` to represent an empty linked list.
    - Call `insert_head` to add nodes (e.g., 30, 32, 35) at the head of the list.
    - After each insertion, call `disp` to display the current state of the linked list.
-  
-   ```cpp
-   #include <iostream>
+  ```
+  #include <iostream>
 using namespace std;
 
-class link{
-    public:
-    int data ;
-    
+class link {
+public:
+    int data;
     link* next;
 
-    link(int num){
-        data= num;
-        next= NULL;
+    link(int num) {
+        data = num;
+        next = NULL;
     }
 };
 
-void insert_head(link* &head, int data){
+// Correcting the function name and syntax
+void insert_head(link*& head, int data) {
     link* new_node = new link(data);
-    new_node ->next =head;
-    head = new_node;
+    new_node->next = head; // Link the new node to the current head
+    head = new_node;       // Update head to the new node
 }
 
-void disp(link* head){
+void disp(link* head) {
     link* temp = head;
-    while(temp!=NULL){
-        cout<<temp-> data<<"->";
-        temp = temp->next; 
+    while (temp != NULL) {
+        cout << temp->data << "->"; // Print current node's data
+        temp = temp->next;          // Move to the next node
     }
-    cout<<"NULL"<<endl;
+    cout << "NULL" << endl; // Indicate the end of the list
 }
 
-int main(){
-    link* head = NULL;
-    insert_head (head,30);
-    disp(head);
+int main() {
+    link* head = NULL; // Initialize head to NULL
 
-    insert_head(head, 32);
-    disp(head);
+    insert_head(head, 30); // Insert 30 at the head
+    disp(head);            // Display the list
 
-    insert_head(head, 35);
-    disp(head); 
-} 
+    insert_head(head, 32); // Insert 32 at the head
+    disp(head);            // Display the list
+
+    insert_head(head, 35); // Insert 35 at the head
+    disp(head);            // Display the list 
+
+    return 0;
+}
 ```
-
 
 **5. Conclusion:**
 Linked lists are a foundational data structure in computer science, offering unique properties that suit various scenarios, especially where dynamic size and efficient insertions/deletions are required. However, the trade-offs in memory usage and access speed must be carefully considered when choosing between linked lists and other data structures, such as arrays. Understanding the theory and mechanics of linked lists is essential for effective problem-solving and algorithm design in DSA.
