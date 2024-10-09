@@ -93,7 +93,7 @@ int main(){
    - Initialize a pointer `head` to `NULL` to represent an empty linked list.
    - Call `insert_head` to add nodes (e.g., 30, 32, 35) at the head of the list.
    - After each insertion, call `disp` to display the current state of the linked list.
-  ```
+  ``` cpp
   #include <iostream>
 using namespace std;
 
